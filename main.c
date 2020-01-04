@@ -3,32 +3,35 @@
 
 void printHelloWorld(int);
 void printXTenTimes(unsigned int);
-void convertMetricToImperialHeights(unsigned int);
+void convertMetricToImperialHeights(int);
 void fibonacci(void);
 void volumeOfACylinder(double, double);
 
 int main(void) {
     printf("Question 1\n");
     printHelloWorld(10);
-
-    printf("\nQuestion 2\n");
+    printf("\nQuestion 2 Print range number from parameter plus next 10 numbers\n");
     printXTenTimes(10);
+    printf("\n");
+    printf("\nQuestion 3 Metric to Imperial Conversion\n");
+    convertMetricToImperialHeights(101);
+    convertMetricToImperialHeights(3);
+    convertMetricToImperialHeights(15);
+    convertMetricToImperialHeights(192);
+    convertMetricToImperialHeights(124);
 
-    printf("\nQuestion 3\n");
-    //convertMetricToImperialHeights(10);
-
-
-    printf("\nQuestion 4\n");
+    printf("\n");
+    printf("\nQuestion 4 Fibonacci sequence\n");
     fibonacci();
-//
-    printf("\nQuestion 5\n");
-
-//    height 7.0cm and radius 4.0cm
-//    height 20.0cm and radius 3.0cm
-//    height 14.7cm and radius 5.2cm
+    printf("\n");
+    printf("\nQuestion 5 Volume of a Cylinder\n");
+    //    height 7.0cm and radius 4.0cm
     volumeOfACylinder(7.0, 4.0);
+    //    height 20.0cm and radius 3.0cm
     volumeOfACylinder(20.0, 3.0);
+    //    height 14.7cm and radius 5.2cm
     volumeOfACylinder(14.7, 5.2);
+
     return 0;
 }
 
@@ -55,12 +58,9 @@ void printHelloWorld(int number){
 }
 
 /* Question 2:
-
 Complete the function below so that it prints every integer from x to x + 10.  Do not use loops.
-
 Call this function from the main to test your program.
 */
-
 
 //printXTenTimes will take any unsigned integer value and print out the values from 1 to the
 //parameter plus 10
@@ -76,11 +76,13 @@ void printXTenTimes(unsigned int number){
 
 /* Question 3:
 
-Complete the function below so that it converts the height of a person from centimetres to feet and inches. Use integer division (rounding down is acceptable, which is the default for integer division).
-
+Complete the function below so that it converts the height of a person from centimetres to feet and inches.
+Use integer division (rounding down is acceptable, which is the default for integer division).
 Hint: 254 cm is exactly 100 inches and 12 inches is exactly 1 foot.
 
-Call this function from the main to test your program.  For example you could test your program with the follow five values, where "?" replaced with the true value.
+Call this function from the main to test your program.
+For example you could test your program with the follow five values,
+where "?" replaced with the true value.
 
 101 cm is 3 feet 3 inches to the nearest inch.
 3 cm is 0 feet 1 inches to the nearest inch.
@@ -92,16 +94,17 @@ Call this function from the main to test your program.  For example you could te
 /*convertMetricToImperialHeights takes any unsigned integer classified as centimeters
  *  and will print out the converted values into feet and inches rounded to the closed value.
  * */
-void convertMetricToImperialHeights(unsigned int centimeters){
-    double const cmToFeet = 0.0328084 * centimeters;
-    double const cmToInches = 0.3937008 * centimeters;
+void convertMetricToImperialHeights( int centimeters){
+    int feet;
+    double inches;
+    if(centimeters<0){
+        printf("Invalid value. Input must be positive");
+    }
+    inches = (int)(centimeters/2.52);
+    feet = (int) inches /12;
+    inches = (int) inches - (feet*12);
 
-    int feet = (int) cmToFeet;
-    int inches = (int) cmToInches %  (int) cmToFeet;
-
-    printf("%d cm is %d feet %d inches to the nearest inch", centimeters, feet, inches);
-
-
+    printf("%d cm is %d feet %.0f inches to the nearest inch\n", centimeters, feet, inches);
 }
 
 /* Question 4:
@@ -116,17 +119,17 @@ each on a new line: i.e. the first four lines should be as follows:
 
 Call this function from the main to test your program.
 */
-
+//RAY JOLLY notes on question:
 //fibonacci function takes no parameter and returns the first 10 numbers in the fibonacci sequence
-//REQUIRED: must use three variables (current, previous, next)
-//fibonacci sequence is defined as the next number being the sum of the previous and the current.
+//REQUIRED: must use three variables (current, previous, next). Therefore can't really use recursion.
+//fibonacci sequence is defined as the next number being the sum of the previous and the current value.
 void fibonacci(void){
     int current = 1; //int literal starting at 1
     int previous = 0; //int literal starting at 0
     int next; //initialized
     int i = 0; //incrementer
 
-    //first 2 base values    are printed
+    //first 2 base values are printed
     printf("%d\n", previous);
     printf("%d\n", current);
     //Since I cannot use recursion due to the required variables,
@@ -143,7 +146,8 @@ void fibonacci(void){
 
 /* Question 5:
 
-Complete the function below so that it uses two variables: height and radius. Use these two variables and print to the screen, the volume of a cylinder.
+Complete the function below so that it uses two variables: height and radius.
+Use these two variables and print to the screen, the volume of a cylinder.
 
 Call this function from the main to test your program.  For example, you could test your program with the following values,
 
@@ -163,7 +167,7 @@ void volumeOfACylinder(double height, double radius){
         printf("Negative numbers are invalid values");
     } else{
         double volume = M_PI * (radius * radius) * height;
-        printf("the cylinder with height %.1f and radius of %.1f has a volume of %.2f\n", height, radius, volume);
+        printf("the cylinder with height %.1fcm and radius of %.1fcm has a volume of %.2fcm^3\n", height, radius, volume);
     }
 }
 
