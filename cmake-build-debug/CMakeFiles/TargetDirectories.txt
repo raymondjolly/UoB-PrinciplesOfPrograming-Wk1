@@ -1,0 +1,3 @@
+/Users/raymondjolly/CLionProjects/PoP-Week1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/raymondjolly/CLionProjects/PoP-Week1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/raymondjolly/CLionProjects/PoP-Week1/cmake-build-debug/CMakeFiles/PoP_Week1.dir
